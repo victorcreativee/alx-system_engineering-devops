@@ -1,0 +1,9 @@
+Host server01
+    HostName 192.168.1.29
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication noHost server01
+    HostName 192.168.1.29
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
