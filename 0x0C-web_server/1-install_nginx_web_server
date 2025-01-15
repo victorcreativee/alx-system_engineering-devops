@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-# Script to install Nginx and configure it to return "Hello World!" on the root URL
+# Script to install Nginx and configure it to return "Hello World!" 
 
-# Update package list and install Nginx
-apt-get update
+apt-get update -y
 apt-get install -y nginx
+sudo ufw allow 'NGIX HTTP'
 
-# Configure Nginx
-echo "Hello World!" > /var/www/html/index.html
-
-# Restart Nginx
+sh -c 'echo "Hello World!" > /var/www/html/index.html'
 service nginx restart
