@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # make a shorter script
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-service nginx start
-rm /run/nginx.pid
+apt-get update
+apt-get install -y apache2
+service apache2 start
+if pgrep apache2 > /dev/null
+then
+    echo "apache2 is running"
+else
+    echo "apache2 is not running"
+fi
