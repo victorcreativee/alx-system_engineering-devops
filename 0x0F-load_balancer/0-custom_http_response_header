@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # installs Nginx web server 
 
 sudo apt-get update
