@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Installs HAProxy load balancer
+
+sudo apt-get -y update
+sudo apt-get install -y haproxy
+sudo chown $USER:USER /etc/haproxy/haproxy.cfg
+
+echo  "
+frontend victorcreative.tech
+	bind *:80
+	mode http
+	default_backend victorcreativee
+
+backend victorcreativee
+	balance roundrobin
+	server 806468-web-01 54.152.55.178:80 check
+	server 806468-web-02 34.207.83.88:80 check" >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
+
