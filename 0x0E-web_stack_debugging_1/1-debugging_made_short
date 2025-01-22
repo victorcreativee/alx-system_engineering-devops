@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#Make a short and sweet script
+# Make a short and sweet script
 
-ln -sf /etc/nginx/sites-available/default  /etc/nginx/sites-enabled/default
-sudo service nginx restart
+cat /etc/nginx/sites-available/default > /etc/nginx/sites-enabled/default
+sudo service nginx start
 rm /run/nginx.pid
