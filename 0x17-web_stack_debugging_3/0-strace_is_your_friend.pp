@@ -2,6 +2,6 @@
 # editing the mistyped .phpp
 
 exec { 'fix-wordpress-server-error':
-	command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
-	path => '/usr/bin/:/bin/',
+  command => '/bin/sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  onlyif  => '/bin/test -f /var/www/html/wp-settings.php',
 }
