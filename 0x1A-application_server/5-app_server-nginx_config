@@ -1,0 +1,44 @@
+server {
+        # Listen on port 80
+        listen      80 default_server;
+        listen      [::]:80 default_server ipv6only=on;
+
+        # Ip address of domain name / Server
+        server_name 54.87.253.166;
+
+        # Customize header name
+        add_header X-Served-By $HOSTNAME;
+
+        # Serve ///airbnb-onepage/ route from AirBnB_clone_v2
+        location = /airbnb-onepage/ {
+                proxy_pass http://127.0.0.1:5000/airbnb-onpage/;
+        }
+
+        # Serve /number_odd_or_even/ route on AirBnB_clone_v2
+        location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+                proxy_pass http://127.0.0.1:5001//number_odd_or_even/$1;
+        }
+
+        # Serve AirBnB_clone_v3 API
+        location /api {
+                proxy_pass http://127.0.0.1:5002/api;
+        }
+
+        # Configure /2-hbnb route of AirBnB_clone_v4 as root location
+        location / {
+                proxy_pass http://127.0.0.1:5003/2-hbnb;
+        }
+
+	# Serve static content for AirBnB_clone_v4
+        location /static {
+                alias web_dynamic/static/;
+        }
+
+        #404 error page
+        error_page 404 /400.html;
+        location /404 {
+                root /var/ww/html;
+                internal;
+        }
+}
+
